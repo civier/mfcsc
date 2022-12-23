@@ -99,7 +99,7 @@
      OUTPUT
 
          The main output of mfcsc consists of the file:
-                 mask-final.csv -                final mask indicating the connections to which mFCSC is calculated
+                 mask.csv -                final mask indicating the connections to which mFCSC is calculated
          
          As well as one connectome file for each participant:
                  mFCSC-file1-file2-masked.csv - connectome of mFCSC values for the
@@ -124,7 +124,7 @@
          however, in case they are within the mask after all, a warning will
          be issued and they will be assigned the mFCSC value of -999.
          In this case, one approach is to manually exclude these cells from the
-         mask by editing 'mask-final.csv' and using the ammended mask in
+         mask by editing 'mask.csv' and using the ammended mask in
          further analyses.
 
 	ACKNOWLEDGMENTS
