@@ -131,12 +131,12 @@
 
 	    When using MFCSC, the following articles should be cited:
 
-		    MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, and its application for 
-		    detecting hemispheric functional specialisations
-		    Civier O, Sourty M, Calamante F (in press) Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
+		MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, and its application for 
+		detecting hemispheric functional specialisations
+		Civier O, Sourty M, Calamante F (in press) Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
 
-       Complex network measures of brain connectivity: Uses and interpretations.
-		    Rubinov M, Sporns O (2010) NeuroImage 52:1059-69.
+		Complex network measures of brain connectivity: Uses and interpretations.
+		Rubinov M, Sporns O (2010) NeuroImage 52:1059-69.
 
 
 
