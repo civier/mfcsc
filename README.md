@@ -1,4 +1,6 @@
  
+     MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes
+     
      DESCRIPTION
 
          mfcsc receive pairs of functional and structural connectivity
