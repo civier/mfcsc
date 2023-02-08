@@ -137,7 +137,12 @@ sc_stronger_than_fc = reshape(sc_stronger_than_fc_vec,N,N);
 	normalized_fc_mat(~mask) = NaN;
     
     p = polyfit(normalized_sc_mat(~isnan(normalized_sc_mat)),normalized_fc_mat(~isnan(normalized_fc_mat)),1);
-    return_r = corr(normalized_sc_mat(~isnan(normalized_sc_mat)),normalized_fc_mat(~isnan(normalized_fc_mat)));
+    
+    % OC - Replaced corr with corrcoef so won't need to have the "Statistics and Machine Learning Toolbox" loaded 
+    % Previoussly used: return_r = corr(normalized_sc_mat(~isnan(normalized_sc_mat)),normalized_fc_mat(~isnan(normalized_fc_mat)));
+    corr_matt = corrcoef(normalized_sc_mat(~isnan(normalized_sc_mat)),normalized_fc_mat(~isnan(normalized_fc_mat)));
+    return_r = corr_matt(1,2);
+    
     return_intersect = p(2);
     return_slope =  p(1);
 
