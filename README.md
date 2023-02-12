@@ -140,5 +140,8 @@
 		Complex network measures of brain connectivity: Uses and interpretations.
 		Rubinov M, Sporns O (2010) NeuroImage 52:1059-69.
 
+	    The authors acknowledge the facilities and scientific and technical assistance of the National Imaging Facility, 
+	    a National Collaborative Research Infrastructure Strategy (NCRIS) capability, at Swinburne Neuroimaging, Swinburne University of Technology
+	    
 
 
