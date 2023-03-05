@@ -1,0 +1,2 @@
+The directory where I work on the project is:
+/home/ocivier/mfcsc
