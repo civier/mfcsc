@@ -3,11 +3,33 @@ function calculate_laterality(input_folder,output_folder)
 %      calulate_laterality
 %      ===================
 %
+%      DESCRIPTION
+%
+%             calculate_laterality compares the mismatch between FC and SC in the left hemisphere
+%             to the mismatch in the right hemisphere.
+%
 %             calculate_laterality recevies a group of connectivity matrices with MFCSC values
 %             and for each connection in the matrix, compare between left and right hemispheres.
 %             calculate_laterality returns the results of the statsitical tests, as well as which
 %             tests are significant after benferroni correction for multiple comparisons.
+%
+%             calculate_laterlaity intends to analyse a homogenous group of participants. However,
+%             it also outputs the difference between hemispheres within each participant, to 
+%             assist with other statistical deasigns.
 %             
+%      USAGE
+%
+%             calculate_laterality(MFCFC_INPUT_DIR,OUTPUT_DIR)
+%
+%      ARGUMENTS
+%
+%             MFCSC_INPUT_DIR
+%
+%             The directory containing the connectivity matrices with MFCSC values.
+%
+%             OUTPUT_DIR
+%
+%
 
 
 %      Note: difference between hemispheres will be only caclulated to
