@@ -1,7 +1,3 @@
-Oren Civier
- 
-    XXX
-
        calulate_laterality
        ===================
  
