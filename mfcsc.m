@@ -246,11 +246,11 @@ if ~exist('is_figures')
 elseif isdeployed
     is_figures = str2logical(is_figures);
 end
-if ~exist('BCT_DIR')
+if ~exist('bct_dir')
     % Get the folder of the mfcsc.m script
     [folder,~,~] = fileparts(mfilename('fullpath'));
-    BCT_DIR = [folder filesep INCLUDED_BCT_SUBDIR];
-%     if ~exist(BCT_DIR,'dir')
+    bct_dir = [folder filesep INCLUDED_BCT_SUBDIR];
+%     if ~exist(bct_dir,'dir')
 %         'folder does not exist'
 %         BCT_DIR
 %         BCT_DIR = 'built-in';
@@ -274,14 +274,14 @@ fprintf('is_keep_neg_fc:\t%s\n',LogicalStr{is_keep_neg_fc+1});
 fprintf('is_symmetrical:\t%s\n',LogicalStr{is_symmetrical+1}); 
 fprintf('is_figures:\t%s\n',LogicalStr{is_figures+1}); 
 if ~isdeployed % BCT_DIR is built in if code is deployed
-    fprintf('BCT_DIR:\t%s\n',BCT_DIR); 
+    fprintf('bct_dir:\t%s\n',bct_dir); 
 end
 fprintf('\n'); 
 
 % add the BCT to Matlab's path
 if ~isdeployed % no need to add BCT_DIR if code is deployed
-    if ~exist(BCT_DIR,'dir')
-        addpath(BCT_DIR);
+    if ~exist(bct_dir,'dir')
+        addpath(bct_dir);
     else
         fprintf('\nmfcsc: Brain Connetivity Toolbox is not in BCT_DIR!\n');
         return;
