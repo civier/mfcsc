@@ -37,10 +37,17 @@ function testlat(input_folder,output_folder)
 %             Each cell represent a pair of bilateral (left and right) connections.
 %
 %             The main output of testlat consists of the file:
+%
 %                 sig_all.csv -    binary connectivity matrix. The cells where MFCSC
 %                                  is significantly different between the left and right connections
-%                                  of the pair are 1 (after correction for multiple comparisons).
+%                                  of the pair are 1 (after correction for multiple comparisons over 
+%                                  all cells in the upper triangle of the matrix).
 %                                  Connections outside of the mask are -1.
+%
+%                 pvalue_all.csv   - connectivity matrix of p-values. The p value is each cell
+%                                    is the result of the t-test comparing the MFCSC of the left connection
+%                                    to the MFCSC of the right connection in all input connectomes.
+%                                    p values are not corrected for multiple comparisons.
 %
 %                 mask_L_and_R.csv - binary connectivity matrix. The cells where both left and right
 %                                    connections in the pair are in the whole-brain mask are 1.
