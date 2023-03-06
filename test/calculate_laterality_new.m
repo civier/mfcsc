@@ -1,7 +1,7 @@
-function calculate_laterality_new(input_folder,output_folder)
+function calculate_laterality(input_folder,output_folder)
 %
-%      calulate_laterality_new
-%      =======================
+%      calulate_laterality
+%      ===================
 %
 %      Note: difference between hemispheres will be only caclulated to
 %      connections which are within the mask.csv in both hemispheres.
