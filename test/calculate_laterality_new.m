@@ -140,23 +140,6 @@ sign_R_cmtk = mean_mismatch_cmtk(N/2+(1:N/2),N/2+(1:N/2))./abs(mean_mismatch_cmt
 [~,ps] = ttest(squeeze(L_gt_Rs)); % uncorrected ps, as correction done in another function
 ps = squeeze(ps); 
 
-% % different classes
-% pos_L_gt_R = 1;
-% neg_L_st_R = 2;
-% pos_L_st_R = 3;
-% neg_L_gt_R = 4;
-% flip_L_gt_R = 5;
-% flip_L_st_R = 6;
-% all = 7;
-
-% strings to use for filenames
-% str{pos_L_gt_R} = 'pos_L_gt_R';
-% str{neg_L_st_R} = 'neg_L_st_R'; 
-% str{pos_L_st_R} = 'pos_L_st_R';
-% str{neg_L_gt_R} = 'neg_L_gt_R';
-% str{flip_L_gt_R} = 'flip_L_gt_R'; 
-% str{flip_L_st_R} = 'flip_L_st_R'; 
-
 strs = {'pos_L_gt_R',
 'neg_L_st_R',
 'pos_L_st_R',
