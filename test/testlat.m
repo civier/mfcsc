@@ -8,7 +8,7 @@ function testlat(input_folder,output_folder)
 %             testlat compares the mismatch between FC and SC in the left hemisphere
 %             to the mismatch in the right hemisphere.
 %
-%             testlat recevies a group of connectivity matrices with MFCSC values
+%             testlat recevies a group of connectivity matrices (Desikan-Killiany ROIs) with MFCSC values
 %             and for each connection in the matrix, compare between left and right hemispheres.
 %             testlat returns the results of the statsitical tests, as well as which
 %             tests are significant after benferroni correction for multiple comparisons.
@@ -22,22 +22,21 @@ function testlat(input_folder,output_folder)
 %      USAGE
 %
 %             testlat(MFCFC_INPUT_DIR,OUTPUT_DIR)
+
+%      INPUT
 %
-%      ARGUMENTS
-%
-%             MFCSC_INPUT_DIR
-%
-%             The directory containing the connectivity matrices with MFCSC values.
-%
-%             OUTPUT_DIR
-%
-%             The directory where the output files will be written to.
+%             The input files will have 84 rows and 84 columns, in par with the Desikan-Killiany atlas.
+%             Rows and columns of the connetivity matrices need to be order according to the 
+%             order specified here: https://osf.io/q7v9t
+%             This is the order used by the MRtrix3 software: https://www.mrtrix.org/
 %
 %      OUTPUT
 %
+%             The output files will have half the rows and columns of the input matrices (42).
+%             They will be ordered identically to columns/rows 1-42 of the input matrices.
 %
 %             The main output of testlat consists of the file:
-%                 mask-final.csv - final mask indicating the connections to which mFCSC is calculated
+%                 sig_all.csv - final mask indicating the connections to which mFCSC is calculated
 %         As well as one connectome file for each participant:
 %%%                 mFCSC-file1-file2-masked.csv - connectome of mFCSC values for the
 %%%                                                participant whose FC and SC
@@ -50,7 +49,19 @@ function testlat(input_folder,output_folder)
 %%%             FC_avg - the average FC connectome
 %%%             mask-direct_SC_is_shortest_path.csv - mask of connections in which the path length of the direct connection (1/transformed_SC) is shorter than any other indirect path between the two regions
 %%%             SC_avg - the average SC connectome
-
+%
+%
+%
+%      ARGUMENTS
+%
+%             MFCSC_INPUT_DIR
+%
+%             The directory containing the connectivity matrices with MFCSC values.
+%
+%             OUTPUT_DIR
+%
+%             The directory where the output files will be written to.
+%
 %      Note: difference between hemispheres will be only caclulated to
 %      connections which are within the mask.csv in both hemispheres.
 %
