@@ -34,9 +34,20 @@ function testlat(input_folder,output_folder)
 %
 %             The output files will have half the rows and columns of the input matrices (42).
 %             They will be ordered identically to columns/rows 1-42 of the input matrices.
+%             Each cell represent a pair of bilateral (left and right) connections.
 %
 %             The main output of testlat consists of the file:
-%                 sig_all.csv - final mask indicating the connections to which mFCSC is calculated
+%                 sig_all.csv -    binary connectivity matrix. The cells where MFCSC
+%                                  is significantly different between the left and right connections
+%                                  of the pair are 1 (after correction for multiple comparisons).
+%                                  Connections outside of the mask are -1.
+%
+%                 mask_L_and_R.csv - binary connectivity matrix. The cells where both left and right
+%                                    connections in the pair are in the whole-brain mask are 1.
+%                                    
+%                 LminusR-mean.csv - a connectivity matrix. Every cell is the average values of
+%                                    the right connection's MFCSC subtracted from the left connection. 
+%
 %         As well as one connectome file for each participant:
 %%%                 mFCSC-file1-file2-masked.csv - connectome of mFCSC values for the
 %%%                                                participant whose FC and SC
