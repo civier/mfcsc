@@ -280,10 +280,10 @@ fprintf('\n');
 
 % add the BCT to Matlab's path
 if ~isdeployed % no need to add BCT_DIR if code is deployed
-    if ~exist(bct_dir,'dir')
+    if exist(bct_dir,'dir')
         addpath(bct_dir);
     else
-        fprintf('\nmfcsc: Brain Connetivity Toolbox is not in BCT_DIR!\n');
+        fprintf('\nmfcsc: Brain Connetivity Toolbox is not in bct_dir!\n');
         return;
     end
 end
