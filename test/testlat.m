@@ -19,10 +19,6 @@ function testlat(input_folder,output_folder)
 %
 %             testlat can also be used for connectivity matrices with other metrics other than mfcsc.
 %             
-%      USAGE
-%
-%             testlat(MFCFC_INPUT_DIR,OUTPUT_DIR)
-
 %      INPUT
 %
 %             The input files will have 84 rows and 84 columns, in par with the Desikan-Killiany atlas.
@@ -50,7 +46,9 @@ function testlat(input_folder,output_folder)
 %%%             mask-direct_SC_is_shortest_path.csv - mask of connections in which the path length of the direct connection (1/transformed_SC) is shorter than any other indirect path between the two regions
 %%%             SC_avg - the average SC connectome
 %
+%      USAGE
 %
+%             testlat(MFCFC_INPUT_DIR,OUTPUT_DIR)
 %
 %      ARGUMENTS
 %
