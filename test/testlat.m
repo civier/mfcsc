@@ -36,7 +36,7 @@ function testlat(input_folder,output_folder)
 %             They will be ordered identically to columns/rows 1-42 of the input matrices.
 %             Each cell represent a pair of bilateral (left and right) connections.
 %
-%             The main output of testlat consists of the file:
+%             The main output of testlat consists of the files:
 %
 %                 sig_all.csv -    binary connectivity matrix. The cells where MFCSC
 %                                  is significantly different between the left and right connections
