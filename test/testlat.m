@@ -3,6 +3,10 @@ function testlat(input_folder,output_folder)
 %      testlat -- test laterality
 %      ==========================
 %
+%      USAGE
+%
+%             testlat(MFCFC_INPUT_DIR,OUTPUT_DIR)
+%
 %      DESCRIPTION
 %
 %             testlat compares the mismatch between FC and SC in the left hemisphere
@@ -45,10 +49,6 @@ function testlat(input_folder,output_folder)
 %%%             FC_avg - the average FC connectome
 %%%             mask-direct_SC_is_shortest_path.csv - mask of connections in which the path length of the direct connection (1/transformed_SC) is shorter than any other indirect path between the two regions
 %%%             SC_avg - the average SC connectome
-%
-%      USAGE
-%
-%             testlat(MFCFC_INPUT_DIR,OUTPUT_DIR)
 %
 %      ARGUMENTS
 %
