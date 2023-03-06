@@ -7,6 +7,10 @@ function testlat(input_folder,output_folder)
 %
 %             testlat(MFCFC_INPUT_DIR,OUTPUT_DIR)
 %
+%      PREREQUISITES
+%
+%             Matlab's Statistics and Machine Learning Toolbox
+%
 %      DESCRIPTION
 %
 %             testlat compares the mismatch between FC and SC in the left hemisphere
