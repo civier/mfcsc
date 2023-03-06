@@ -135,6 +135,9 @@ in_labels = textscan(fid,'%s','delimiter','\n');
 in_labels = in_labels{1};
 fclose(fid);
 
+%%% Add path of one directory up, to have connectome_write
+addpath([folder filesep '..']);
+
 % 1. need to load mismatches from files and convert to Rosenthal ordering
 folder_path = input_folder; % Replace with the path to your folder
 file_list = dir(fullfile(folder_path, '*.csv')); % List all .mat files in the folder
