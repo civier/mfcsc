@@ -1,25 +1,27 @@
-function calculate_laterality(input_folder,output_folder)
+function testlat(input_folder,output_folder)
 %
-%      calulate_laterality
-%      ===================
+%      testlat -- test laterality
+%      ==========================
 %
 %      DESCRIPTION
 %
-%             calculate_laterality compares the mismatch between FC and SC in the left hemisphere
+%             testlat compares the mismatch between FC and SC in the left hemisphere
 %             to the mismatch in the right hemisphere.
 %
-%             calculate_laterality recevies a group of connectivity matrices with MFCSC values
+%             testlat recevies a group of connectivity matrices with MFCSC values
 %             and for each connection in the matrix, compare between left and right hemispheres.
-%             calculate_laterality returns the results of the statsitical tests, as well as which
+%             testlat returns the results of the statsitical tests, as well as which
 %             tests are significant after benferroni correction for multiple comparisons.
 %
-%             calculate_laterlaity intends to analyse a homogenous group of participants. However,
+%             testlat intends to analyse a homogenous group of participants. However,
 %             it also outputs the difference between hemispheres within each participant, to 
-%             assist with other statistical deasigns.
+%             assist with other statistical designs.
+%
+%             testlat can also be used for connectivity matrices with other metrics other than mfcsc.
 %             
 %      USAGE
 %
-%             calculate_laterality(MFCFC_INPUT_DIR,OUTPUT_DIR)
+%             testlat(MFCFC_INPUT_DIR,OUTPUT_DIR)
 %
 %      ARGUMENTS
 %
@@ -31,7 +33,23 @@ function calculate_laterality(input_folder,output_folder)
 %
 %             The directory where the output files will be written to.
 %
-
+%      OUTPUT
+%
+%
+%             The main output of testlat consists of the file:
+%                 mask-final.csv - final mask indicating the connections to which mFCSC is calculated
+%         As well as one connectome file for each participant:
+%%%                 mFCSC-file1-file2-masked.csv - connectome of mFCSC values for the
+%%%                                                participant whose FC and SC
+%%%                                                connectomes are stored in file1 and file2
+%%%                                                respectively (excluding
+%%%                                                the files extensions)
+%%%
+%%%         There are also several misc files in the misc subdir:
+%%%             transformed_SC_avg - the average transfered SC connectome
+%%%             FC_avg - the average FC connectome
+%%%             mask-direct_SC_is_shortest_path.csv - mask of connections in which the path length of the direct connection (1/transformed_SC) is shorter than any other indirect path between the two regions
+%%%             SC_avg - the average SC connectome
 
 %      Note: difference between hemispheres will be only caclulated to
 %      connections which are within the mask.csv in both hemispheres.
