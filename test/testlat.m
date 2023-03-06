@@ -68,18 +68,9 @@ function testlat(input_folder,output_folder)
 %                 sig_*_labels - ROI labels for significant pairs of connections for the 6 different classes
 %                                of relationships.
 %
-
-%mFCSC-file1-file2-masked.csv - connectome of mFCSC values for the
-%%%                                                participant whose FC and SC
-%%%                                                connectomes are stored in file1 and file2
-%%%                                                respectively (excluding
-%%%                                                the files extensions)
-%%%
-%%%         There are also several misc files in the misc subdir:
-%%%             transformed_SC_avg - the average transfered SC connectome
-%%%             FC_avg - the average FC connectome
-%%%             mask-direct_SC_is_shortest_path.csv - mask of connections in which the path length of the direct connection (1/transformed_SC) is shorter than any other indirect path between the two regions
-%%%             SC_avg - the average SC connectome
+%                 individual_connectomes/LminusR* - a connectivity matrix for each input connectome.
+%                                                   Each cell is the difference between the MFCSC of left and right
+%                                                   connections in the pair for the individual participant.
 %
 %      ARGUMENTS
 %
