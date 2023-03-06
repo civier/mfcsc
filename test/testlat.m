@@ -35,6 +35,8 @@ function testlat(input_folder,output_folder)
 %             The output files will have half the rows and columns of the input matrices (42).
 %             They will be ordered identically to columns/rows 1-42 of the input matrices.
 %             Each cell represent a pair of bilateral (left and right) connections.
+%             Note that all output matrices only include values for cells which are within 
+%             the mask (mask_L_and_R.csv). Cells outside of the mask get the value of -99.
 %
 %             The main output of testlat consists of the files:
 %
@@ -42,7 +44,6 @@ function testlat(input_folder,output_folder)
 %                                  is significantly different between the left and right connections
 %                                  of the pair are 1 (after correction for multiple comparisons over 
 %                                  all cells in the upper triangle of the matrix).
-%                                  Connections outside of the mask are -1.
 %
 %                 sig_all_labels.txt - ROI labels for all signficant pairs of connections.
 %                                  Labels used are those of the left connection in each pair.
@@ -82,8 +83,6 @@ function testlat(input_folder,output_folder)
 %
 %             The directory where the output files will be written to.
 %
-%      Note: difference between hemispheres will be only caclulated to
-%      connections which are within the mask.csv in both hemispheres.
 %
 %      For HCP data in the respository, there are 512 connections that are
 %      1 in the left hemisphere, and 497 connections that are 1 in the
