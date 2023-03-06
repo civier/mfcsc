@@ -29,6 +29,7 @@ function calculate_laterality(input_folder,output_folder)
 %
 %             OUTPUT_DIR
 %
+%             The directory where the output files will be written to.
 %
 
 
