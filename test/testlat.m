@@ -44,6 +44,9 @@ function testlat(input_folder,output_folder)
 %                                  all cells in the upper triangle of the matrix).
 %                                  Connections outside of the mask are -1.
 %
+%                 sig_all_labels.txt - ROI labels for all signficant pairs of connections.
+%                                  Labels used are those of the left connection in each pair.
+%
 %                 pvalue_all.csv   - connectivity matrix of p-values. The p value is each cell
 %                                    is the result of the t-test comparing the MFCSC of the left connection
 %                                    to the MFCSC of the right connection in all input connectomes.
@@ -55,8 +58,18 @@ function testlat(input_folder,output_folder)
 %                 LminusR-mean.csv - a connectivity matrix. Every cell is the average values of
 %                                    the right connection's MFCSC subtracted from the left connection. 
 %
-%         As well as one connectome file for each participant:
-%%%                 mFCSC-file1-file2-masked.csv - connectome of mFCSC values for the
+%             Additional files are:
+%
+%                 sig_* - significant tests matrices for 6 different classes of relationships between
+%                         left and right average values. Results are corrected.
+%                 
+%                 pvalue_* - p-values matrices for the 6 different classes of relationships.
+%
+%                 sig_*_labels - ROI labels for significant pairs of connections for the 6 different classes
+%                                of relationships.
+%
+
+%mFCSC-file1-file2-masked.csv - connectome of mFCSC values for the
 %%%                                                participant whose FC and SC
 %%%                                                connectomes are stored in file1 and file2
 %%%                                                respectively (excluding
