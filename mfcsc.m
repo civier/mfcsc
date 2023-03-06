@@ -1,4 +1,5 @@
-function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,BCT_DIR)
+function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,bct_dir)
+%%% 
 %%%
 %%%     mfcsc -- Mismatch between Functional Connectivity and Structural Connectivity  
 %%%     =============================================================================
@@ -66,6 +67,8 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,is_contra,is_keep
 %%%
 %%%                 mask-final.csv - final mask indicating the connections to which mFCSC is calculated
 %%%
+
+%%%
 %%%         There are also several misc files in the group_connectomes subdir:
 %%%
 %%%             transformed_SC_avg - the average transfered SC connectome
@@ -107,7 +110,14 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,is_contra,is_keep
 %%%         The output directory where the mask and mFCSC files are to be
 %%%         saved
 %%%
-%%%     OPTIONAL ARGUMENTS  
+%%%     OPTIONAL ARGUMENTS
+%%%
+%%%         not_in_mask_value
+%%%
+%%%         Value that will be assigned to cells in the output matrices that are
+%%%         not in the mask. By deafult it is set to -99 to make sure
+%%%         people do not report the values in these cells.
+%%%         Can be set to 0 to prevent this value from affecting color scaling of plots.    
 %%%
 %%%         is_contra
 %%%         
@@ -169,6 +179,15 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,is_contra,is_keep
 %%%		NeuroImage 52:1059-69.
 %%%
 
+
+% To compile for MCR, run:
+% cd /home/ocivier/mfcsc
+% mcc -m mfcsc.m -o mfcsc -R -nojvm
+
+% To test MCR, run:
+% cd /fred/oz120/oren/mfcsc_input/Data
+% !/home/ocivier/mfcsc/mfcsc FC_SC_list.txt Functional_Connectomes_From_SCFC_FS Structural_Connectomes_From_SCFC_FS ../output
+
 % OC - Mac/Linux example - remove from final version
 % mfcsc('/Users/ocivier/Dropbox/Documents/fernando/fcsc/Data/FC_SC_list.txt', '/Users/ocivier/Dropbox/Documents/fernando/FCSC/Data/Functional_Connectomes_From_SCFC_FS', '/Users/ocivier/Dropbox/Documents/fernando/FCSC/Data/Structural_Connectomes_From_SCFC_FS', '/Users/ocivier/Dropbox/Documents/fernando/FCSC/Code/MFCSC_code/Output',false,false,false,false,'/Users/ocivier/Dropbox/Documents/fernando/phase between structural and functional/Code/2017_01_15_BCT');
 % OC - Windows example - remove from final version
@@ -183,7 +202,7 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,is_contra,is_keep
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % OC - remove from final version
-dbstop if error;
+%dbstop if error;
 
 INCLUDED_BCT_SUBDIR = '2017_01_15_BCT';
 
@@ -193,28 +212,49 @@ INCLUDED_BCT_SUBDIR = '2017_01_15_BCT';
 
 if ~exist('FC_SC_LIST') || ~exist('FC_INPUT_DIR') || ~exist('SC_INPUT_DIR') || ~exist('OUTPUT_DIR')
     fprintf('\nmfcsc: ERROR: not enough input arguments!\n');
-    fprintf('\nUSAGE:\n');
-    fprintf('matlab -batch "mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,is_contra,is_keep_neg_fc,is_symmetrical,is_figures)"\n\n');
-    return
+    fprintf('\nUSAGE -\n');
+    fprintf('Matlab''s IDE (MATLAB license required): mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,bct_dir)\n');
+    fprintf('Command line (MATLAB license required): matlab -batch "mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,bct_dir)"\n');
+    fprintf('Neurodesk (no MATLAB license required): mfcsc FC_SC_LIST FC_INPUT_DIR SC_INPUT_DIR OUTPUT_DIR not_in_mask_value is_contra is_keep_neg_fc is_symmetrical is_figures\n');
+    fprintf('\nNotice first 4 arguments (in caps) are mandatory\n'); 
+    return;
 end
 
+if ~exist('not_in_mask_value')
+    not_in_mask_value = '-99';
+end
+global exclude_value;
+exclude_value = str2num(not_in_mask_value);
 % set flags to false if omitted
 if ~exist('is_contra')
     is_contra = false;
+elseif isdeployed
+    is_contra = str2logical(is_contra);
 end
 if ~exist('is_keep_neg_fc')
     is_keep_neg_fc = false;
+elseif isdeployed
+    is_keep_neg_fc = str2logical(is_keep_neg_fc);
 end
 if ~exist('is_symmetrical')
     is_symmetrical = false;
+elseif isdeployed
+    is_symmetrical = str2logical(is_symmetrical);
 end
 if ~exist('is_figures')
     is_figures = false;
+elseif isdeployed
+    is_figures = str2logical(is_figures);
 end
 if ~exist('BCT_DIR')
     % Get the folder of the mfcsc.m script
     [folder,~,~] = fileparts(mfilename('fullpath'));
     BCT_DIR = [folder filesep INCLUDED_BCT_SUBDIR];
+%     if ~exist(BCT_DIR,'dir')
+%         'folder does not exist'
+%         BCT_DIR
+%         BCT_DIR = 'built-in';
+%     end
 end
 
 % make flag global, as it is used by the connectome_write function
@@ -225,18 +265,28 @@ is_symmetrical_global = is_symmetrical;
 fprintf('\nInput arguments (or if not provided, defaults)\n\n');
 fprintf('FC_SC_LIST:\t%s\n',FC_SC_LIST); 
 fprintf('FC_INPUT_DIR:\t%s\n',FC_INPUT_DIR); 
-fprintf('FC_INPUT_DIR:\t%s\n',FC_INPUT_DIR); 
+fprintf('SC_INPUT_DIR:\t%s\n',SC_INPUT_DIR); 
 fprintf('OUTPUT_DIR:\t%s\n',OUTPUT_DIR); 
+fprintf('not_in_mask_value:\t%s\n',not_in_mask_value);
 LogicalStr = {'false', 'true'};
 fprintf('is_contra:\t%s\n',LogicalStr{is_contra+1}); 
 fprintf('is_keep_neg_fc:\t%s\n',LogicalStr{is_keep_neg_fc+1}); 
 fprintf('is_symmetrical:\t%s\n',LogicalStr{is_symmetrical+1}); 
 fprintf('is_figures:\t%s\n',LogicalStr{is_figures+1}); 
-fprintf('BCT_DIR:\t%s\n',BCT_DIR); 
+if ~isdeployed % BCT_DIR is built in if code is deployed
+    fprintf('BCT_DIR:\t%s\n',BCT_DIR); 
+end
 fprintf('\n'); 
 
 % add the BCT to Matlab's path
-addpath(BCT_DIR);
+if ~isdeployed % no need to add BCT_DIR if code is deployed
+    if ~exist(BCT_DIR,'dir')
+        addpath(BCT_DIR);
+    else
+        fprintf('\nmfcsc: Brain Connetivity Toolbox is not in BCT_DIR!\n');
+        return;
+    end
+end
 
 % enable calculating mask. Disabling it not tested; do at your own risk!
 CALCULATE_MASK = true;
@@ -556,7 +606,7 @@ if CALCULATE_SCFC  % formerly, this part was in "calculate_all_laterality_reg.m"
 
         % turn all cells that are not in the mask to ignore, including sc=0
         % cells that might have been set to 0
-        mismatch(~combined_mask_sym) = -99; 
+        mismatch(~combined_mask_sym) = exclude_value; 
         % If IGNORE_ZERO_SC then turn cells that are not in the mask,
         % but still NaN into -999, otherwise turn them into 0
         if any(isnan(mismatch))
@@ -580,4 +630,6 @@ end
 
 fprintf('MFCSC finished successfuly\n\n');
 
+if isdeployed
+    exit 
 end
