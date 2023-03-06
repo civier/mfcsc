@@ -128,9 +128,9 @@ if ~exist([output_folder filesep 'individual_connectomes'], 'dir')
        mkdir([output_folder filesep 'individual_connectomes']);
 end
 
-%%%% JUST SO CAN VERIFY THAT CONVERSTION MOVE LABELS TO RIGHT PLACE %%% 
-BASE = ['.' filesep];
-fid = fopen([BASE 'MRtrix_labels_Desikan-Killiany.txt']);
+%%%% Load labels from the same folder the testlat.m is in
+[folder,~,~] = fileparts(mfilename('fullpath'));
+fid = fopen([folder filesep 'MRtrix_labels_Desikan-Killiany.txt']);
 in_labels = textscan(fid,'%s','delimiter','\n');
 in_labels = in_labels{1};
 fclose(fid);
