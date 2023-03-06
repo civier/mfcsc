@@ -3,6 +3,13 @@ function calculate_laterality(input_folder,output_folder)
 %      calulate_laterality
 %      ===================
 %
+%             calculate_laterality recevies a group of connectivity matrices with MFCSC values
+%             and for each connection in the matrix, compare between left and right hemispheres.
+%             calculate_laterality returns the results of the statsitical tests, as well as which
+%             tests are significant after benferroni correction for multiple comparisons.
+%             
+
+
 %      Note: difference between hemispheres will be only caclulated to
 %      connections which are within the mask.csv in both hemispheres.
 %
