@@ -29,10 +29,16 @@ function testlat(input_folder,output_folder)
 %             
 %      INPUT
 %
-%             The input files will have 84 rows and 84 columns, in par with the Desikan-Killiany atlas.
-%             Rows and columns of the connetivity matrices need to be order according to the 
+%             The input files are connectivity matrices with a MFCSC value for each connection, 
+%             generated using the mfcsc tool.
+%             They should have 84 rows and 84 columns, in par with the Desikan-Killiany atlas.
+%
+%             Rows and columns of the connetivity matrices need to be ordered according to the 
 %             order specified here: https://osf.io/q7v9t
 %             This is the order used by the MRtrix3 software: https://www.mrtrix.org/
+%             IMPORTANT: When using mfcsc to generate the MFCSC connectivity matrices, it is thus
+%             recommended to organise the rows and columns of the input functional and structural
+%             connectivity matrices already in this order.
 %
 %      OUTPUT
 %
