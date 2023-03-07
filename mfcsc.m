@@ -168,15 +168,27 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%         mask by editing 'mask-final.csv' and using the ammended mask in
 %%%         further analyses.
 %%%
-%%%	ACKNOWLEDGMENTS
 %%%
-%%%	    When using MFCSC, the following articles should be cited:
+%%%      DEVELOPER
 %%%
-%%%		Civier O, Sourty M, Calamante F (2023) MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, and its application for 
-%%%		detecting hemispheric functional specialisations. Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
+%%%         Oren Civier (orenciv@gmail.com)
+%%%         https://www.swinburne.edu.au/research/our-research/access-our-research/find-a-researcher-or-supervisor/researcher-profile/?id=ocivier
 %%%
-%%%     Rubinov M, Sporns O (2010) Complex network measures of brain connectivity: Uses and interpretations.
-%%%		NeuroImage 52:1059-69.
+%%%      CITATIONS
+%%%
+%%%         When using testlat, authors should cite:
+%%%
+%%%             Civier O, Sourty M, Calamante F (2023) MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, 
+%%%             and its application for detecting hemispheric functional specialisations. Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
+%%%
+%%%             Rubinov M, Sporns O (2010) Complex network measures of brain connectivity: Uses and interpretations. NeuroImage 52:1059-69.%
+%%%
+%%%      ACKNOWLEDGMENTS
+%%%
+%%%         National Health and Medical Research Council of Australia (grant numbers APP1091593 andAPP1117724)
+%%%         Australian Research Council (grant number DP170101815)
+%%%         National Imaging Facility (NIF), a National Collaborative Research Infrastructure Strategy (NCRIS) capability at Swinburne Neuroimaging, 
+%%%         Swinburne University of Technology.
 %%%
 
 
