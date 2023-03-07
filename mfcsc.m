@@ -7,7 +7,6 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%     USAGE
 %%%
 %%%         From Matlab IDE:
-%%%             Change to the folder with the code, and then enter the following command -
 %%%             mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,bct_dir)         
 %%%
 %%%         From the command-line:
