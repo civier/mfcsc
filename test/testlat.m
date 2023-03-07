@@ -65,12 +65,12 @@ function testlat(input_folder,output_folder)
 %
 %             Additional files are:
 %
-%                 sig_* - significant tests matrices for 6 different classes of relationships between
+%                 sig_*.csv - significant tests matrices for 6 different classes of relationships between
 %                         left and right average values. Results are corrected.
 %                 
-%                 pvalue_* - p-values matrices for the 6 different classes of relationships.
+%                 pvalue_*.csv - p-values matrices for the 6 different classes of relationships.
 %
-%                 sig_*_labels - ROI labels for significant pairs of connections for the 6 different classes
+%                 sig_*_labels.txt - ROI labels for significant pairs of connections for the 6 different classes
 %                                of relationships.
 %
 %                 individual_connectomes/LminusR* - a connectivity matrix for each input connectome.
