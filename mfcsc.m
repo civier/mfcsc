@@ -85,7 +85,7 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%         The second column lists the connectivity matrix files for the matching SC connectomes
 %%%
 %%%         An easy method to generate the FC_SC_LIST on Linux or MacOS is to:
-%%%         1) include a matching participant ID in both FC and SC connectomes 
+%%%         1) include a matching participant ID in the filenames of both FC and SC connectomes 
 %%%            (plus optional fixed prefixes and suffixes for each modality).
 %%%         2) put all FC connectomes in one folder and all SC connectomes in another,
 %%%            ensuring that there are no other files in these folders.
