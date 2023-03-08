@@ -92,6 +92,12 @@
 
              The directory where the output files will be written to.
 
+
+      EXAMPLE
+
+             For the example described in the journal article, see:
+             https://osf.io/d7j9n/ under "RUNNING THE PROOF-OF-CONCEPT EXAMPLE APPLICATION (testlat)"
+
       DEVELOPER
 
              Oren Civier (orenciv@gmail.com)
