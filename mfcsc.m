@@ -175,6 +175,10 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%         mask by editing 'mask-final.csv' and using the ammended mask in
 %%%         further analyses.
 %%%
+%%%      EXAMPLE
+%%%
+%%%         For the processing performed in the journal article, see:
+%%%         https://osf.io/d7j9n/ under "TESTING MFCSC INSTALLATION"
 %%%
 %%%      DEVELOPER
 %%%
