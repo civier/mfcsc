@@ -3,7 +3,15 @@
      mfcsc -- Mismatch between Functional Connectivity and Structural Connectivity  
      =============================================================================
 
+     JOURNAL ARTICLE
+     
+          Civier O, Sourty M, Calamante F (2023) MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, 
+          and its application for detecting hemispheric functional specialisations. Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
+
      USAGE
+
+         From Neurodesk (no Matlab license required!):
+             See https://osf.io/d7j9n/
 
          From Matlab IDE:
              mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,bct_dir)         
