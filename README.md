@@ -174,7 +174,7 @@
 
       CITATIONS
 
-         When using testlat, authors should cite:
+         When using mfcsc, authors should cite:
 
              Civier O, Sourty M, Calamante F (2023) MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, 
              and its application for detecting hemispheric functional specialisations. Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
