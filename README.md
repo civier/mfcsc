@@ -174,6 +174,10 @@
          mask by editing 'mask-final.csv' and using the ammended mask in
          further analyses.
 
+      EXAMPLE
+
+             For the processing performed in the journal article, see:
+             https://osf.io/d7j9n/ under "TESTING MFCSC INSTALLATION"
 
       DEVELOPER
 
