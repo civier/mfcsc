@@ -225,7 +225,7 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % OC - remove from final version
-%dbstop if error;
+dbstop if error;
 
 INCLUDED_BCT_SUBDIR = '2017_01_15_BCT';
 
@@ -244,10 +244,13 @@ if ~exist('FC_SC_LIST') || ~exist('FC_INPUT_DIR') || ~exist('SC_INPUT_DIR') || ~
 end
 
 if ~exist('not_in_mask_value')
-    not_in_mask_value = '-99';
+    not_in_mask_value = -99;
+elseif isdeployed % if MCR, need to convert string to number
+    not_in_mask_value = str2num(not_in_mask_value);
 end
 global exclude_value;
-exclude_value = str2num(not_in_mask_value);
+exclude_value = not_in_mask_value;
+
 % set flags to false if omitted
 if ~exist('is_contra')
     is_contra = false;
@@ -290,7 +293,7 @@ fprintf('FC_SC_LIST:\t%s\n',FC_SC_LIST);
 fprintf('FC_INPUT_DIR:\t%s\n',FC_INPUT_DIR); 
 fprintf('SC_INPUT_DIR:\t%s\n',SC_INPUT_DIR); 
 fprintf('OUTPUT_DIR:\t%s\n',OUTPUT_DIR); 
-fprintf('not_in_mask_value:\t%s\n',not_in_mask_value);
+fprintf('not_in_mask_value:\t%f\n',not_in_mask_value);
 LogicalStr = {'false', 'true'};
 fprintf('is_contra:\t%s\n',LogicalStr{is_contra+1}); 
 fprintf('is_keep_neg_fc:\t%s\n',LogicalStr{is_keep_neg_fc+1}); 
@@ -592,7 +595,7 @@ if CALCULATE_SCFC  % formerly, this part was in "calculate_all_laterality_reg.m"
     order_i = 0;
     
     %figure;
-    
+       
     for i=1:numSubjs
         %for i= [4, 14, 19, 46]  %[*13, 14 , *15, 19] %35]   %19 - both have large mismatch %length(subjs)
         
@@ -646,9 +649,34 @@ if CALCULATE_SCFC  % formerly, this part was in "calculate_all_laterality_reg.m"
         
         clear r intersect slope mismatch L_gt_R;
         order_i = order_i + 1;
-        
+               
     end
 
+    figure;
+    mfcsc_fig = squeeze(mean(mismatches));
+    mfcsc_fig(mfcsc_fig == -99) = 0;
+    imagesc(mfcsc_fig);
+    title('Output: MFCSC');
+    colorbar;
+    axis square;
+    
+    % plot sc, fc and mfcsc
+    figure;
+    imagesc(fc_avg);
+    title('Input: FC');
+    colorbar;
+    axis square;
+    colormap('hot');
+    
+    figure;
+    sc_fig = transformed_sc_avg;
+    sc_fig(sc_fig == -999) = 0;
+    imagesc(sc_fig);
+    title('Input: SC (transformed)');
+    colorbar;
+    axis square;
+    colormap('cool');
+    
 end
 
 fprintf('MFCSC finished successfuly\n\n');
