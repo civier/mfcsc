@@ -4,7 +4,15 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%     mfcsc -- Mismatch between Functional Connectivity and Structural Connectivity  
 %%%     =============================================================================
 %%%
+%%%     JOURNAL ARTICLE
+%%%     
+%%%          Civier O, Sourty M, Calamante F (2023) MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, 
+%%%          and its application for detecting hemispheric functional specialisations. Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
+%%%
 %%%     USAGE
+%%%
+%%%         From Neurodesk (no Matlab license required!):
+%%%             See https://osf.io/d7j9n/
 %%%
 %%%         From Matlab IDE:
 %%%             mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,bct_dir)         
@@ -167,6 +175,10 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%         mask by editing 'mask-final.csv' and using the ammended mask in
 %%%         further analyses.
 %%%
+%%%      EXAMPLE
+%%%
+%%%         For the processing performed in the journal article, see:
+%%%         https://osf.io/d7j9n/ under "TESTING MFCSC INSTALLATION"
 %%%
 %%%      DEVELOPER
 %%%
@@ -175,7 +187,7 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%
 %%%      CITATIONS
 %%%
-%%%         When using testlat, authors should cite:
+%%%         When using mfcsc, authors should cite:
 %%%
 %%%             Civier O, Sourty M, Calamante F (2023) MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, 
 %%%             and its application for detecting hemispheric functional specialisations. Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
