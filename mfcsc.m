@@ -85,7 +85,7 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%
 %%%     MANDATORY ARGUMENTS
 %%%
-%%%         FC_SC_LIST
+%%%         FC_SC_LIST (path)
 %%%
 %%%         Path to a tab-separated file with two columns.
 %%%         The first column lists the files with the connectivity matrices of the FC connectomes
@@ -104,42 +104,42 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%             paste /tmp/fc_list /tmp/sc_list > path_to_filename
 %%%         6) Provide path_to_filename as the FC_SC_LIST argument
 %%%
-%%%         FC_INPUT_DIR
+%%%         FC_INPUT_DIR (path)
 %%%
 %%%         The directory containing the files with the FC connectivity matrices
 %%%
-%%%         SC_INPUT_DIR
+%%%         SC_INPUT_DIR (path)
 %%%
 %%%         The directory containing the files with the SC connectivity matrices
 %%%
-%%%         OUPTUT_DIR
+%%%         OUPTUT_DIR (path)
 %%%
 %%%         The output directory where the mask and mFCSC files are to be
 %%%         saved
 %%%
 %%%     OPTIONAL ARGUMENTS
 %%%
-%%%         not_in_mask_value
+%%%         not_in_mask_value (any number)
 %%%
 %%%         Value that will be assigned to cells in the output matrices that are
 %%%         not in the mask. By deafult it is set to -99 to make sure
 %%%         people do not report the values in these cells.
 %%%         Can be set to 0 to prevent this value from affecting color scaling of plots.    
 %%%
-%%%         is_contra
+%%%         is_contra (true or false)
 %%%         
 %%%         By default, mFCSC is calculated for ipsilateral connections
 %%%         (is_contra = false or omitted)
 %%%         set is_contra to true to calculate mFCSC for contralateral connections instead.
 %%%
-%%%         is_keep_neg_fc
+%%%         is_keep_neg_fc (true or false)
 %%%
 %%%         By default, mFCSC removes cells that have negative mean FC before 
 %%%         fitting the model used to transform SC
 %%%         (is_remove_negative_fc = false or omitted)
 %%%         set is_keep_negative_fc to true to keep them
 %%%
-%%%         is_symmetrical
+%%%         is_symmetrical (true or false)
 %%%
 %%%         By default, only the upper right triangle of the output matrices is
 %%%         populated, with the lower triangle being zeroed out.
@@ -148,14 +148,14 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%         mirroring the upper right triangle into the bottom left triangle
 %%%         In both cases, the main diagonal is zeroed out.
 %%%
-%%%         is_figures
+%%%         is_figures (true or false)
 %%%
 %%%         By default, do not show figures.
 %%%         (is_figures = false or omitted)
 %%%         set is_figures to true to print verbose figures with information for QC and debg.
 %%%         Not tested. Use at your own risk!
 %%%
-%%%         bct_dir
+%%%         bct_dir (path)
 %%%
 %%%         If specified, Matlab will look for the Brain Connectome Toolbox (BCT)
 %%%         in this directory instead of the BCT version supplied with
