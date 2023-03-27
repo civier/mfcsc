@@ -9,6 +9,10 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%          Civier O, Sourty M, Calamante F (2023) MFCSC: Novel method to calculate mismatch between functional and structural brain connectomes, 
 %%%          and its application for detecting hemispheric functional specialisations. Scientific Reports https://doi.org/10.1038/s41598-022-17213-z
 %%%
+%%%     VERSION
+%%%
+%%%          1.1
+%%%
 %%%     USAGE
 %%%
 %%%         From Neurodesk (no Matlab license required!):
@@ -29,7 +33,13 @@ function mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value
 %%%
 %%%     PREREQUISITES:
 %%%
+%%%         Matlab 9.8.0.1721703 (R2020a) Update 7 or newer (older versions of Matlab should work as well, but not tested)
 %%%         Matlab's Curve Fitting toolbox
+%%%
+%%%             OR
+%%%
+%%%         Neurodesktop 20230324 or newer 
+%%%         (older versions of Neurodesktop should work as well, but not tested; to use in older versions, load from the terminal using: 'ml mfcsc/1.1')
 %%%
 %%%     DESCRIPTION
 %%%
