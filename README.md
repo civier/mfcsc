@@ -18,10 +18,15 @@
              See https://osf.io/d7j9n/
 
          From Matlab IDE:
+             1. Download the archive of the software from https://github.com/civier/mfcsc/releases/tag/1.1 and extracts it to a folder
+             2. Start Matlab and change to the folder with the code
+             3. Run the following command inside Matlab -
              mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,bct_dir)         
 
          From the command-line:
-             Change to the folder with the code, and then enter the following command -
+             1. Download the archive of the software from https://github.com/civier/mfcsc/releases/tag/1.1 and extracts it to a folder
+             2. Open a terminal and change to the folder with the code
+             3. Enter the following command at the terminal -
              matlab -batch "mfcsc(FC_SC_LIST,FC_INPUT_DIR,SC_INPUT_DIR,OUTPUT_DIR,not_in_mask_value,is_contra,is_keep_neg_fc,is_symmetrical,is_figures,bct_dor)"
 
          The 4 arguments in caps are mandatory. 
@@ -32,13 +37,13 @@
 
      PREREQUISITES:
 
-         Matlab 9.8.0.1721703 (R2020a) Update 7 or newer (older versions of Matlab should work as well, but not tested)
-         Matlab's Curve Fitting toolbox
-
-             OR
-
          Neurodesktop 20230324 or newer 
          (older versions of Neurodesktop should work as well, but not tested; to use in older versions, load from the terminal using: 'ml mfcsc/1.1')
+
+              OR
+
+         Matlab 9.8.0.1721703 (R2020a) Update 7 or newer (older versions of Matlab should work as well, but not tested)
+         Matlab's Curve Fitting toolbox
 
      DESCRIPTION
 
